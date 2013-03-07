@@ -1,0 +1,33 @@
+!ScalaScript
+:"script.sca"
+{
+   Group:
+	External String(dynamictxt[7], SiteID, ErrMessage, debug, playSlide, ISpotSpotGuid, ISpotSlotGuid, ISpotCustomerGuid, ISpotDisplayGuid);
+	External Integer(snowOp, accum_snowOp, Dark_cloudsOp, dinoOp, fireworksOp, LightningOp, RainOp, lcloudOp, skyx, suny, sunx, sun_spin, signPixelHeight, signPixelWidth, dwellTime, cityOvOp, lightsOp);
+    BackgroundSettings(Size(800, 600));
+    Config.SaveOpts(SaveEditable(On));
+    Config.SaveEncoding("Auto");
+  Sequence:
+    :"citypromoSimpler-273711 - Mon Dec 12 2011 14:08:43 GMT-0600. multi-script-container."
+    {
+      Sequence:
+        WindowsScript("config.js", Engine("JScript"), Wait(On), ShareVariable("signPixelHeight"), ShareVariable("signPixelWidth"), ShareVariable("dwellTime"), ShareVariable("ISpotSpotGuid"), ShareVariable("ISpotSlotGuid"), ShareVariable("ISpotCustomerGuid"), ShareVariable("ISpotDisplayGuid"));
+        WindowsScript("loadData.js", Engine("JScript"), Wait(On), ShareVariable("snowOp"),ShareVariable("accum_snowOp"),ShareVariable("Dark_cloudsOp"),ShareVariable("dinoOp"),ShareVariable("fireworksOp"), ShareVariable("LightningOp"),ShareVariable("RainOp"),ShareVariable("lcloudOp"), ShareVariable("cityOvOp"), ShareVariable("lightsOp"),  ShareVariable("skyx"), ShareVariable("suny"), ShareVariable("sunx"), ShareVariable("sun_spin"), ShareVariable("dynamictxt"), ShareVariable("playSlide"), ShareVariable("debug"), ShareVariable("ErrMessage"), ShareVariable("signPixelHeight"), ShareVariable("signPixelWidth"), ShareVariable("dwellTime"), ShareVariable("SiteID"), ShareVariable("ISpotSpotGuid"), ShareVariable("ISpotSlotGuid"), ShareVariable("ISpotCustomerGuid"), ShareVariable("ISpotDisplayGuid"));
+        WindowsScript("getData.js", Engine("JScript"), Wait(Off), ShareVariable("snowOp"),ShareVariable("accum_snowOp"),ShareVariable("Dark_cloudsOp"),ShareVariable("dinoOp"),ShareVariable("fireworksOp"), ShareVariable("LightningOp"),ShareVariable("RainOp"),ShareVariable("lcloudOp"), ShareVariable("cityOvOp"), ShareVariable("lightsOp"),  ShareVariable("skyx"), ShareVariable("suny"), ShareVariable("sunx"), ShareVariable("sun_spin"), ShareVariable("dynamictxt"), ShareVariable("playSlide"), ShareVariable("debug"), ShareVariable("ErrMessage"), ShareVariable("signPixelHeight"), ShareVariable("signPixelWidth"), ShareVariable("dwellTime"), ShareVariable("SiteID"), ShareVariable("ISpotSpotGuid"), ShareVariable("ISpotSlotGuid"), ShareVariable("ISpotCustomerGuid"), ShareVariable("ISpotDisplayGuid"));
+        {
+          Group:
+            If(signPixelWidth  < 800);
+          Sequence:
+            :"script.sca"
+            Script("800.sca");
+        }
+        {
+          Group:
+            If(signPixelWidth >= 800 and signPixelWidth < 1280);
+          Sequence:
+            :"script.sca"
+            Script("1280.sca");
+        }	
+    }
+}
+

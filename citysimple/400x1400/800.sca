@@ -1,0 +1,46 @@
+!ScalaScript
+:"800.sca"
+{
+  Group:
+     External String(dynamictxt[7], SiteID, ErrMessage, debug, playSlide, ISpotSpotGuid, ISpotSlotGuid, ISpotCustomerGuid, ISpotDisplayGuid);
+     External Integer(snowOp, accum_snowOp, Dark_cloudsOp, dinoOp, fireworksOp, LightningOp, RainOp, lcloudOp, skyx, suny, sunx, sun_spin, signPixelHeight, signPixelWidth, dwellTime, cityOvOp, lightsOp);
+    BackgroundSettings(Size(800, 600));
+    Config.SaveOpts(SaveEditable(On));
+    Config.SaveEncoding("Auto");
+  Sequence:
+    :"citypromoSimpler-273711 - Mon Dec 12 2011 14:08:43 GMT-0600. multi-script-800x600."
+    {
+      Group:
+        Display(Backdrop(RGB($0)), Margin(10, 10, 0, 0), Tabs(Explicit(80, 160, 240, 320, 400, 480, 560)), UserPalette(RGBPen(1, $0, $ffffff, $999999, $555555, $712068, $df449c, $dc110e, $662200, $ff5a00, $ff9c00, $ffee00, $8800, $dd00, $cccc, $66ff, $aa, $777777, $bbbbbb, $dddddd)));
+        Clip(0, 0, "slide1.jpg", Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+        Clip(0, skyx, "skyslider.jpg", Operation(On, ChromaKey($ff00, Feather(0))));
+        Clip(100, -199, "celestialSpinner.png", Operation(On, Rotate(sun_spin), ChromaKey($ff00, Feather(0))));
+		Clip(0, 0, "Dark_clouds.png", Effects(Opacity(Dark_cloudsOp)), Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+		Clip(0, 0, "Lightning.png", Effects(Opacity(LightningOp)), Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+		Clip(0, 0, "lightly_cloudy.png", Effects(Opacity(lcloudOp)), Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+		Clip(0, 0, "dino.png", Effects(Opacity(dinoOp)), Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+		Clip(0, 0, "fireworks.png", Effects(Opacity(fireworksOp)), Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+		Clip(0, 0, "city.png", Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+        Clip(0, 0, "sillouette.png", Effects(Opacity(cityOvOp)), Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+        Clip(0, 0, "Wires.png", Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+        Clip(0, 0, "lights.png", Effects(Opacity(lightsOp)), Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));		
+		Clip(0, 0, "Rain.png", Effects(Opacity(RainOp)), Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+        Clip(0, 0, "accum_snow.png", Effects(Opacity(accum_snowOp)), Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+		Clip(0, 0, "snow.png", Effects(Opacity(snowOp)), Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));		        
+		Clip(0, 0, "logo.png", Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+		Text(EvalInt(dynamictxt[1]), EvalInt(dynamictxt[2]), "!(dynamictxt[3])^n", Face(On, RGB($ffffff)), AntiAlias(On), Font("Lucida Sans Unicode (Western [])", 5), Kerning(None), Leading(EvalInt(dynamictxt[4])), Justify(Center, Top), Append("!(dynamictxt[5])", Font("Geometric 706 Black BT (Western [<Geometr706 Md BT> 700])", EvalInt(dynamictxt[6])), Spacing(EvalInt(dynamictxt[7])), Kerning(AlphaNum)));
+        Text(20, 420, "!debug", Face(On, Pen(2)), AntiAlias(On), Update(Normal), Font("Bitstream Vera Sans (Western [])", 18), Wrap(On, Width(360)));
+        Text(400, 420, "!ErrMessage", Face(On, Pen(2)), AntiAlias(On), Update(Normal), Font("Bitstream Vera Sans (Western [])", 18), Wrap(On, Width(360)));
+        Pause.Milli(dwellTime);
+        If(playSlide = "slide1");
+    }
+    {
+      Group:
+        Display(Backdrop(RGB($0)), Margin(10, 10, 0, 0), Tabs(Explicit(80, 160, 240, 320, 400, 480, 560)), UserPalette(RGBPen(1, $0, $ffffff, $999999, $555555, $712068, $df449c, $dc110e, $662200, $ff5a00, $ff9c00, $ffee00, $8800, $dd00, $cccc, $66ff, $aa, $777777, $bbbbbb, $dddddd)));
+        Clip(0, 0, "failsafe.jpg", Operation(On, Resize(signPixelWidth, signPixelHeight), ChromaKey($ff00, Feather(0))));
+        Text(20, 420, "!debug", Face(On, Pen(2)), AntiAlias(On), Update(Normal), Font("Bitstream Vera Sans (Western [])", 18), Wrap(On, Width(360)));
+        Text(400, 420, "!ErrMessage", Face(On, Pen(2)), AntiAlias(On), Update(Normal), Font("Bitstream Vera Sans (Western [])", 18), Wrap(On, Width(360)));
+        Pause.Milli(dwellTime);
+        If(playSlide = "failsafe");
+    }
+}
